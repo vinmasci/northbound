@@ -2,6 +2,12 @@
   var KEY = "northbound:lastChapter";
   var SCROLL_KEY_PREFIX = "northbound:scroll:";
 
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+
   var path = window.location.pathname;
   var match = path.match(/chapter-(\d{2})\.html/);
 
